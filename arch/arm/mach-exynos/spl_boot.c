@@ -221,6 +221,8 @@ void copy_uboot_to_ram(void)
 	if (bootmode == BOOT_MODE_OM)
 		bootmode = get_boot_mode();
 
+
+
 	switch (bootmode) {
 #ifdef CONFIG_SPI_BOOTING
 	case BOOT_MODE_SERIAL:
@@ -270,7 +272,7 @@ void copy_uboot_to_ram(void)
            *
            */
         unsigned int i, count = 0;
-        unsigned char *buffer = (unsigned char *)0x02050000;
+        unsigned char *buffer = (unsigned char *)0x02025000;
         unsigned char *dst = (unsigned char *)CONFIG_SYS_TEXT_BASE;
         unsigned int step = (0x10000 / 512);
            
