@@ -126,7 +126,9 @@ void system_clock_init(void)
 
     /* Set APLL to 1400MHz */
     clr_pll_con0 = SDIV(7) | PDIV(63) | MDIV(1023) | FSEL(1);
-    set = SDIV(0x0) | PDIV(0x3) | MDIV(0xAF) | FSEL(1);
+//    set = SDIV(0x0) | PDIV(0x3) | MDIV(0xAF) | FSEL(1);
+	/* Set APLL to 1000MHz*/
+    set = SDIV(0x0) | PDIV(0x3) | MDIV(0x7D) | FSEL(1);
 
     clrsetbits_le32(&clk->apll_con0, clr_pll_con0, set);
 
