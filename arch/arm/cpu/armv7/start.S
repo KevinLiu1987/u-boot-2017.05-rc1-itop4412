@@ -84,7 +84,9 @@ switch_to_hypervisor_ret:
 	bl	cpu_init_crit
 #endif
 #endif
-
+#ifndef CONFIG_SPL_BUILD
+bl led_debug
+#endif
 	bl	_main
 
 /*------------------------------------------------------------------------------*/
@@ -306,3 +308,28 @@ ENTRY(cpu_init_crit)
 	b	lowlevel_init		@ go setup pll,mux,memory
 ENDPROC(cpu_init_crit)
 #endif
+
+ENTRY(led_debug)
+	ldr r0, =0x1002330c
+	orr r1, r0, #0x300
+	str r1, [r0]
+	ldr r0, =0x11000c08
+	ldr r1, =0x0
+	str r1, [r0]
+	
+	ldr r0, =0x11000060
+	ldr r1, =0x10
+	str r1, [r0]
+	ldr r0, =0x11000064
+	ldr r1, =0x2
+	str r1, [r0]
+	
+	ldr r0, =0x11000100
+	ldr r1, =0x1
+	str r1, [r0]
+	ldr r0, =0x11000104
+	ldr r1, =0x1
+	str r1, [r0]
+
+	mov pc, lr
+ENDPROC(led_debug)
