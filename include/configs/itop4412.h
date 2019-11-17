@@ -114,8 +114,11 @@
 
 #define CONFIG_SPL_LDSCRIPT    "board/samsung/common/exynos-uboot-spl.lds"
 #define CONFIG_SPL_MAX_FOOTPRINT   (14 * 1024)
+#define CONFIG_SPL_STACK               0x02040000
 
-#define CONFIG_SYS_INIT_SP_ADDR        0x02040000
+//#define CONFIG_SYS_INIT_SP_ADDR        0x02040000
+#define UBOOT_SIZE                     (2 << 20)
+#define CONFIG_SYS_INIT_SP_ADDR        (CONFIG_SYS_TEXT_BASE + UBOOT_SIZE - 0x1000)
 
 /* U-Boot copy size from boot Media to DRAM.*/
 #define COPY_BL2_SIZE      0x80000
