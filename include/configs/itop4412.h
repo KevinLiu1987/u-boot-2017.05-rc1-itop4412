@@ -116,7 +116,7 @@
 #define CONFIG_SPL_MAX_FOOTPRINT   (14 * 1024)
 #define CONFIG_SPL_STACK               0x02040000
 
-//#define CONFIG_SYS_INIT_SP_ADDR        0x02040000
+/* #define CONFIG_SYS_INIT_SP_ADDR        0x02040000 */
 #define UBOOT_SIZE                     (2 << 20)
 #define CONFIG_SYS_INIT_SP_ADDR        (CONFIG_SYS_TEXT_BASE + UBOOT_SIZE - 0x1000)
 
